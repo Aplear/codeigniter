@@ -82,7 +82,7 @@
                             <?php foreach($articles as $nav_drop_item): ?>
                                 <?php if($nav_item['id'] == $nav_drop_item['page_id']): ?>
                                     <li>
-                                        <a href="/articles/<?=$nav_drop_item['alias']?>">
+                                        <a href="/<?=$nav_item['alias']?>/<?=$nav_drop_item['alias']?>">
                                             <?=mb_substr(strip_tags($nav_drop_item['title']),0,20,'UTF-8')?>
                                         </a>
                                     </li>
