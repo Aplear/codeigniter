@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Контакты</title>
+<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:400,700,800,600,500,300,200' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../application/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../application/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../application/css/default.css"/>
+<!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="../application/css/ie7.css"/>
+    <![endif]-->
+
+<!--jquery library-->
+<script type="text/javascript" src="../application/scripts/jquery-1.7.1.min.js"></script>
+<!--/jquery library-->
+
+<!--jquery easing-->
+<script type="text/javascript" src="../application/scripts/jquery.easing.1.3.js"></script>
+<!--/jquery easing-->
+
+<!--nivo slider plugin for jquery-->
+<script type="text/javascript" src="../application/scripts/nivo-slider/jquery.nivo.slider.js"></script>
+<link rel="stylesheet" type="text/css" href="../application/scripts/nivo-slider/nivo-slider.css"/>
+<!--/ nivo slider plugin for jquery-->
+
+<!--superfish dropdown-->
+<link rel="stylesheet" type="text/css" href="../application/scripts/superfish/css/superfish.css"/>
+<script type="text/javascript" src="../application/scripts/superfish/js/superfish.js"></script>
+<script type="text/javascript" src="../application/scripts/superfish/js/hoverIntent.js"></script>
+<script type="text/javascript" src="../application/scripts/superfish/js/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="../application/scripts/superfish/js/supersubs.js"></script>
+<!--/superfish dropdown-->
+
+<!--auto complete-->
+<script type='text/javascript' src='../application/scripts/autocomplete/jquery.autocomplete.min.js'></script>
+<link rel="stylesheet" type="text/css" href="../application/scripts/autocomplete/jquery.autocomplete.css" />
+<!--/auto complete-->
+
+<!--misc. scripts-->
+<script type="text/javascript" src="../application/scripts/scripts.js"></script>
+<!--/misc. scripts-->
+
+<!--form validation & submit-->
+<link rel="stylesheet" href="../application/scripts/form-validation/validationEngine.jquery.css" type="text/css"/>
+<script src="../application/scripts/form-validation/languages/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="../application/scripts/form-validation/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		// binds form submission and fields to the validation engine
+		var frm = $("#contact_form");
+		var msgdiv = $("#message_box_place_holder");
+		frm.validationEngine({promptPosition:'topRight'});
+		
+		$("#btnReset").click(function(){
+			frm[0].reset();
+			return false;
+		});
+		
+		$("#btnSubmit").click(function(){
+			$(".message-box").remove();
+			
+			if(frm.validationEngine('validate')){
+				$(this).fadeOut('fast');
+				$.ajax({
+					type: 'POST',
+					url: 'xml/contact.php',
+					data: frm.serialize(),
+					success: function(result) {
+						if(result=="1")
+						{
+							inlineMsgBox(msgdiv,'information','Thank you. We have received your mail.',617);
+							frm[0].reset();
+						}else{					
+							inlineMsgBox(msgdiv,'error','Error : ' + result,617);
+						}
+						$("#btnSubmit").fadeIn('fast');
+					}
+				});
+			}
+			
+			return false;
+		});
+	});
+</script>			
+<!--/form validation & submit-->
+
+</head>
+
+<!--body-->
+<body>
+	
+
+	<!--top anchor-->
+    <a name="top"></a>
+    
+    <!--body wrapper-->
+    <div id="body-wrapper">
+    
+    	<div id="page-header-wrapper">
+    
+            <!--header container-->
+            <div id="header-contanier">    
+            
+                <!--header wrapper-->
+                <div id="header" class="center-clear">   
+                         
+                    <!--logo-->
+                    <div id="logo">
+                        <!--logo here-->
+                    </div>
+                    <!-- /logo-->
+                                
+                    <!--header place holder-->
+                    <div class="header-place-holder"></div>
+                    
+                    
+                    
+                    <!--menu-->
+                <ul id="top_menu" class="sf-menu">
+                    <li><a href="index.html">Главная</a><span>Добро пожаловать!</span></li>
+                    
+                    <li><a href="about.html">О компании</a><span>Основная информация</span>
+                        <!--first level dropdown menu-->
+                        <ul>
+                             <li><a href="iso.html">ISO/IEC 20000</a></li>
+                             <li><a href="lic.html">Лицензии и сертификаты</a></li>
+                             <li><a href="pol.html">Политика в области качества</a></li>
+                             <li><a href="cli.html">Наши клиенты и партнеры</a></li>
+                             <li><a href="prei.html">Наши преимущества</a></li>                                 
+                        </ul>
+                        <!--/first level dropdown menu-->                        
+                    </li>
+					<li><a href="news.html">Новости</a><span>Основные новости компании</span></li>
+                    <li><a href="blog.html">Услуги</a><span>Подробная информация</span>
+                        <!--first level dropdown menu-->
+                        <ul>
+                             <li><a href="blog-post1.html">Строительно-монтажные работы</a></li>                                 
+                             <li><a href="blog-post2.html">Обслуживание вычислительной, банковской и платежной техники</a></li>
+                             <li><a href="blog-post3.html">Техническая поддержка пользователей, Система HP Service Manager</a></li>
+                             <li><a href="blog-post4.html">Защита информации</a></li>
+                             <li><a href="blog-post5.html">IT-Офис</a></li>
+							 <li><a href="blog-post6.html">Дистанционное банковское обслуживание</a></li>
+                             							 
+                        </ul>
+                        <!--/first level dropdown menu-->                        
+                    </li>
+                    <li><a href="guest.html">Гостевая</a><span>Гостевой отдел</span></li>                                                                
+                    <li><a href="contact.html">Контакты</a><span>Как связаться!?</span></li>           
+                </ul>
+                <!-- /menu-->
+                    
+                    
+                </div>
+                <!-- /header wrapper-->
+                
+            </div>
+            <!-- /header container-->
+
+	        <div class="clear40"></div>
+                       
+            <!--bread crumb-->
+            <div class="center-clear">
+                <div id="breadcrumb" class="page-columns-head-style gray-frame">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="contact.html" class="active">Контакты</a></li>
+                    </ul>
+                </div>
+			</div>                
+            <!--/bread crumb-->
+            
+        </div>
+        <!--/page header wrapper-->
+        
+        
+        <!--page content wrapper-->
+        <div id="page-content-wrapper">        
+        
+            <!--content container-->
+            <div class="center-clear page-content-wrapper">
+                
+                <div class="page-content gray-frame alignleft_block full-content-width">
+                    <!--inner title-->
+                    <h1 class="heading h1">Контакты:</h1>
+                    <!--/inner title-->
+                    
+					<div class="clear"></div>
+                    
+                    <!--left block-->
+                    <div class="alignleft_block margin-right-20 width-310">
+                    	<!--address-->
+                        <p class="bold_only">Адрес</p>
+                        
+                        <p>улица Первомайская 44, г. Жлобин<br/>
+                        Tелефон: +375 (17) 215-55-05</p>
+                        
+                        <p>Вы можете связаться по телефону, и оставить заявку на инцидент. В ближайшее время, на инцидент отреагируют, и решат вашу проблему.</p>
+                        <!--address-->
+                        
+                        <div class="clear50"></div>
+
+						<!--contact a person-->
+                        <p class="bold_only">Персональные контакты:</p>
+						
+                        <p><span class="orange-only">Заведующая</span><br />
+                        Козлова Наталья Михайловна | 8 (0232) 96-80-08</p>
+						
+                        <p><span class="orange-only">Ведущий инженер программист</span><br />
+                        Андросова Лариса Николаевна | +375 (29) 149-56-82</p>
+                        
+                        <!--contact a person-->
+                    </div>
+                    <!--/left block-->
+                    
+                    <!--right block-->
+                    <div class="alignleft_block">
+                    	
+                        <!--google maps-->
+                        <p class="bold_only">Расположение ЗАО "Сервис Деск" г.Жлобин</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1431.2425919094183!2d30.04354871235151!3d52.89345941399883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x4a8de087c53e2d24!2z0JHQn9ChLdCh0LHQtdGA0LHQsNC90Log0KbQkdCjIOKEljMyMA!5e0!3m2!1sru!2sru!4v1462185229524" width="620" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <!--/google maps-->
+                    
+                    	<div class="clear10"></div>
+                    	<div class="hr-two"></div>
+                    </div>
+                    
+		            <div class="clear20"></div>                    
+                </div>
+                <!--/right block-->
+                
+            </div>
+            <!-- /content container-->
+    	
+            <div class="clear40"></div>
+
+        </div>
+        <!--/page content wrapper-->
+
+        <!--footer-->
+        <div id="footer_container">
+            <div id="footer" class="center-clear">
+                <ul>
+				
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
+					<li><a href="news.html">Новости</a></li>
+                    <li><a href="blog.html">Услуги</a></li>
+                    <li><a href="guest.html">Гостевая</a></li>
+                    <li><a href="contact.html" class="active">Контакты</a></li>
+                </ul>
+
+                <div>© 2016 «Сервис Деск» г. Жлобин — предоставление IT-услуг</div>
+            </div>
+			
+        </div>
+		
+		
+        <!-- /footer-->
+    
+    </div>
+    <!--/body wrapper-->    
+</body>
+<!-- /body -->
+
+</html>
