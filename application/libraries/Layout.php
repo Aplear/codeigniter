@@ -14,6 +14,10 @@ class Layout
     function render($views = array(), $data=array())
     {
 
+        /*start breadcrumbs*/
+        //todo:: нужно организовать библиотеку крошек
+        /*end breadcrumbs*/
+        
         $this->obj->load->model('pages_model');
         $this->obj->load->model('articles_model');
         $data["header"]['pages'] = $this->obj->pages_model->getPagesByWeight();

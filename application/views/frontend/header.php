@@ -75,14 +75,14 @@
                 <li><a href="/">Главная</a><span>Добро пожаловать!</span></li>
 
                 <?php foreach($pages as $nav_item): ?>
-                    <li><a href="/<?=$nav_item['alias']?>"><?=$nav_item['title']?></a><span><?=$nav_item['addon_info']?></span>
+                    <li><a href="/page/<?=$nav_item['alias']?>"><?=$nav_item['title']?></a><span><?=$nav_item['addon_info']?></span>
 
                         <!--first level dropdown menu-->
                         <ul>
                             <?php foreach($articles as $nav_drop_item): ?>
                                 <?php if($nav_item['id'] == $nav_drop_item['page_id']): ?>
                                     <li>
-                                        <a href="/<?=$nav_item['alias']?>/<?=$nav_drop_item['alias']?>">
+                                        <a href="/page/<?=$nav_item['alias']?>/<?=$nav_drop_item['alias']?>">
                                             <?=mb_substr(strip_tags($nav_drop_item['title']),0,20,'UTF-8')?>
                                         </a>
                                     </li>

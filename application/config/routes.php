@@ -53,8 +53,7 @@ $route['default_controller'] = 'start';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['news'] = 'start/news';
-$route['news/:any'] = 'start/articles/$1';
+$route['page/(:any)'] = 'start/pages/$1';
 
-$route['services'] = 'start/services';
-$route['services/:any'] = 'start/articles/$1';
+$route['page/(:any)/(:any)'] = 'start/articles/$1/$2';
+

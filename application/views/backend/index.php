@@ -75,6 +75,9 @@
                         <a href="<?php echo site_url('adminpanel/articles')?>"><i class="fa fa-file fa-fw"></i> Articles</a>
                     </li>
                     <li>
+                        <a href="<?php echo site_url('adminpanel/users')?>"><i class="fa fa-file fa-fw"></i> Articles</a>
+                    </li>
+                    <li>
                         <a href="/authorize/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>

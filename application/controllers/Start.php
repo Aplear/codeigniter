@@ -26,48 +26,29 @@ class Start extends CI_Controller {
 		$data = array();
 		$this->layout->render($views, $data);
 	}
-	
-	public function news()
+
+	public function pages($alias)
 	{
 		$views = [
 			'sidebar',
 			'anons',
 		];
 		$data = array();
-
+;
 		$this->load->model('articles_model');
 		$this->load->model('pages_model');
-		$data['anons'] = $this->articles_model->getArticlesByPages($this->uri->segment(1));
-		$data['module'] = $this->pages_model->getPage('alias',$this->uri->segment(1));
-		$this->layout->render($views, $data);
-	}
-	
-	public function services()
-	{
-		$views = [
-			'sidebar',
-			'anons',
-		];
-		$data = array();
 
-		$this->load->model('articles_model');
-		$this->load->model('pages_model');
-		$data['anons'] = $this->articles_model->getArticlesByPages($this->uri->segment(1));
-		$data['module'] = $this->pages_model->getPage('alias',$this->uri->segment(1));
+		$data['anons'] = $this->articles_model->getArticlesByPages($alias);
+		$data['module'] = $this->pages_model->getPage('alias',$alias);
+		
 		$this->layout->render($views, $data);
 	}
 
-	public function articles($alias=false)
+
+	public function articles($page_alias, $article_alias)
 	{
-		if(!$alias)
+		if(!$article_alias)
 			return false;
-
-		/*start breadcrumbs*/
-
-		/*end breadcrumbs*/
-
-
-
 
 		$views = [
 			'sidebar',
@@ -78,8 +59,9 @@ class Start extends CI_Controller {
 		$this->load->model('articles_model');
 		$this->load->model('pages_model');
 
-		$data['article'] = $this->articles_model->getArticleByAlias($this->uri->segment(2));
-		$data['module'] = $this->pages_model->getPage('alias',$this->uri->segment(1));
+		$data['article'] = $this->articles_model->getArticleByAlias($article_alias);
+		$data['module'] = $this->pages_model->getPage('alias',$page_alias);
+
 		$this->layout->render($views, $data);
 	}
 }
